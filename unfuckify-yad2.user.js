@@ -61,7 +61,7 @@ function renderRowInterest(rowElement, aid, interest)
 {
     var lastTdText, rowTextColor;
     
-    if (interest === true)
+    if (interest)
     {
         lastTdText = '-';
         rowTextColor = '#000000';
