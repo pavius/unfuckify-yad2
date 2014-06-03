@@ -3,3 +3,4 @@ This braindead Greasemonkey script adds a few much needed features to yad2.co.il
 * Colors ads according to how many times you viewed them
 * Lets you downvote an apartment so you don't have to look at it again
 
+Tested with Tampermonkey and Chrome. YMMV.
