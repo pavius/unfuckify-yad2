@@ -8,7 +8,7 @@
 // ==/UserScript==
 
 
-// remove piece of shit distractions
+// hide piece of shit distractions
 [
     ".bannerBetweenTables_main",
     ".search_banners",
@@ -19,12 +19,36 @@
     ".walla_strip",
     ".articles_block",
     "#footer",
-    ".intro_block"
+    ".intro_block",
+    "#GamboBanner",
+    "#rtower",
+    ".banner_strip",
+    "#top_banners",
+    "[alt*='Platinum']",
+    "#ad_martef"
+    
+].forEach(function(elementName)
+          {
+              $(elementName).hide();
+          });
+
+
+// remove piece of shit distractions
+[
+    "#GamboBanner",
+    "#rtower",
+    "#leftSekindo",
+    "#facebookBox",
+    "#dynamicLeftBanner",
+    ".moving_promotion_deals_back",
+    ".platinum",
+    "[id*='Fusion_holder_']"
     
 ].forEach(function(elementName)
           {
               $(elementName).remove();
           });
+
 
 
 function getBackgroundColorBySeen(seen)
@@ -61,7 +85,7 @@ function renderRowInterest(rowElement, aid, interest)
 {
     var lastTdText, rowTextColor;
     
-    if (interest)
+    if (interest === true)
     {
         lastTdText = '-';
         rowTextColor = '#000000';
