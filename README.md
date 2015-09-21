@@ -8,5 +8,5 @@ Tested with Tampermonkey and Chrome. YMMV.
 
 ## Installing
 1. In Chrome, install the Tampermonkey extension
-2. Click on [the java scrript file](https://github.com/pavius/unfuckify-yad2/raw/master/unfuckify-yad2.user.js) - Tampermonkey should catch it and prompt you to install
+2. Click on [the java script file](https://github.com/pavius/unfuckify-yad2/raw/master/unfuckify-yad2.user.js) - Tampermonkey should catch it and prompt you to install
 3. Go to yad2.co.il (shudder) and run a search for rental properties. Things should look different
