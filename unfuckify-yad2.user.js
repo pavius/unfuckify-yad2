@@ -1,17 +1,20 @@
 // ==UserScript==
 // @name          Unfuckify yad2
 // @namespace     http://www.eran.io
-// @version       0.0.2
+// @version       0.0.3
 // @description   Make using yad2 not want to make you kill yourself
 // @match         www.yad2.co.il/Nadlan/rent.php?*
+// @match         www.yad2.co.il/Nadlan/sales.php?*
 // @require       http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
 // ==/UserScript==
 
 // hide piece of shit distractions
 [
+    // uncomment the following line to remove tivuch
+    // ".main_table_wrap:eq(1)",
+
     ".bannerBetweenTables_main",
     ".search_banners",
-    ".main_table_wrap:eq(1)",
     "#Hotpics",
     "#lastsearch_block",
     "iframe",
@@ -86,29 +89,36 @@ function setAdInterest(event) {
     renderRowInterest($(this).parent(), event.data.aid, event.data.interest);
 }
 
-// find all displayed ad IDs and render each row according to what we know about it
-$("tr[id^='tr_Ad_2_2_']").each(function(index) {
+function augmentAds(adPrefix, linkPrefix) {
+    $("tr[id^='" + adPrefix + "']").each(function(index) {
 
-    // get the ad identifier
-    var aid = $(this).attr('id').replace('tr_Ad_2_2_', '');
+        // get the ad identifier
+        var aid = $(this).attr('id').replace(adPrefix, '');
 
-    // get the attributes for this ad, use default
-    var adState = loadAdState(aid);
+        // get the attributes for this ad, use default
+        var adState = loadAdState(aid);
 
-    // increment # of times we've seen this ad
-    adState.seen += 1;
+        // increment # of times we've seen this ad
+        adState.seen += 1;
 
-    // indicate how many times we've seen it
-    $(this).find('td:eq(1)').html('<a href=http://www.yad2.co.il/Nadlan/rent_info.php?NadlanID=' + aid + '>' + adState.seen + '</a>');
+        // indicate how many times we've seen it
+        $(this).find('td:eq(1)').html('<a href=http://www.yad2.co.il/Nadlan/' + linkPrefix + aid + '>' + adState.seen + '</a>');
 
-    // set background color
-    $(this).find('td')
-       .css('background', getBackgroundColorBySeen(adState.seen))
-       .css('font-weight', 'normal');
+        // set background color
+        $(this).find('td')
+        .css('background', getBackgroundColorBySeen(adState.seen))
+        .css('font-weight', 'normal');
 
-    // change the row to reflect if we've expressed disgust at it yet
-    renderRowInterest($(this), aid, adState.interest);
+        // change the row to reflect if we've expressed disgust at it yet
+        renderRowInterest($(this), aid, adState.interest);
 
-    // save what we know about this item
-    saveAdState(aid, adState);
-});
+        // save what we know about this item
+        saveAdState(aid, adState);
+    });
+}
+
+// augment rent and 
+augmentAds('tr_Ad_2_2_', 'rent_info.php?NadlanID=');
+augmentAds('tr_Ad_2_6_', 'tivrent_info.php?NadlanID=');
+augmentAds('tr_Ad_2_1_', 'sales_info.php?NadlanID=');
+augmentAds('tr_Ad_2_5_', 'tivsales_info.php?NadlanID=');
