@@ -5,6 +5,7 @@
 // @description   Make using yad2 not want to make you kill yourself
 // @match         www.yad2.co.il/Nadlan/rent.php?*
 // @match         www.yad2.co.il/Nadlan/sales.php?*
+// @match         www.yad2.co.il/Nadlan/rent_info.php?*
 // @require       http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
 // ==/UserScript==
 
@@ -27,7 +28,8 @@
     ".banner_strip",
     "#top_banners",
     "[alt*='Platinum']",
-    "#ad_martef"
+    "#ad_martef",
+    '.left_column > div:last-of-type'
 
 ].forEach(function(elementName) {
     $(elementName).hide();
