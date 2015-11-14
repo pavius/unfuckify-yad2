@@ -3,9 +3,10 @@
 // @namespace     http://www.eran.io
 // @version       0.0.3
 // @description   Make using yad2 not want to make you kill yourself
-// @match         www.yad2.co.il/Nadlan/rent.php?*
-// @match         www.yad2.co.il/Nadlan/sales.php?*
+// @match         www.yad2.co.il/Nadlan/rent.php*
+// @match         www.yad2.co.il/Nadlan/sales.php*
 // @match         www.yad2.co.il/Nadlan/rent_info.php?*
+// @match         www.yad2.co.il/Nadlan/tivrent_info.php?*
 // @require       http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
 // ==/UserScript==
 
@@ -13,6 +14,9 @@
 [
     // uncomment the following line to remove tivuch
     // ".main_table_wrap:eq(1)",
+    
+    // removes "new projects" banner in details page, comment out if it interests you
+    "#mainFrame > div.right_column > div > div > table > tbody > tr:nth-child(1) > td:nth-child(2) > div",
 
     ".bannerBetweenTables_main",
     ".search_banners",
@@ -29,7 +33,7 @@
     "#top_banners",
     "[alt*='Platinum']",
     "#ad_martef",
-    ".left_column>div:last-of-type"
+    ".left_column > div:last-of-type"
 
 ].forEach(function(elementName) {
     $(elementName).hide();
