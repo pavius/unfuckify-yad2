@@ -7,6 +7,7 @@
 // @match         www.yad2.co.il/Nadlan/sales.php*
 // @match         www.yad2.co.il/Nadlan/rent_info.php?*
 // @match         www.yad2.co.il/Nadlan/tivrent_info.php?*
+// @match         www.yad2.co.il
 // @require       http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
 // ==/UserScript==
 
@@ -33,7 +34,13 @@
     "#top_banners",
     "[alt*='Platinum']",
     "#ad_martef",
-    ".left_column > div:last-of-type"
+    ".left_column > div:last-of-type",
+    
+    "#mainIndex > div.left_column > div.current_ads_block",
+    "#mainIndex > div.left_column > div.login_block + div + div + div",
+    "#mainIndex > div.right_column > div.mador_index_block_wrap > div.mador_index_block_prom_IMAGE",
+    "#mainIndex > div.pie",
+    "#mainIndex > div.yad1_banners"
 
 ].forEach(function(elementName) {
     $(elementName).hide();
