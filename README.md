@@ -1,3 +1,7 @@
+## This project is obsolete, following yad2's facelift
+Some features in this script don't exist in the new yad2, but requires a complete re-work.
+
+## For posterity
 This braindead Greasemonkey script adds a few much needed features to yad2.co.il - the place Israelis with no facebook friends go to look for apartments in Tel Aviv:
 * Removes a crapton of distracting garbage
 * Listings that you haven't seen before are brightly colored
